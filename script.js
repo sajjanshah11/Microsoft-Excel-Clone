@@ -54,9 +54,15 @@ for (let i = 1; i <= 100; i++) {
 
         cellDiv.addEventListener("input",function(e){
             let currentCellAdress = e.currentTarget.getAttribute("cellAdress");
-            let currCellObject = dataObj[currentCellAdress]
-            console.log(currCellObject)
-            console.log(e.currentTarget.innerText)
+            let currentCellObject = dataObj[currentCellAdress]
+            currentCellObject.value = e.currentTarget.innerText;
+            // console.log(currentCellObject)
+            currentCellObject.formula = undefined;
+            let currentUpStream = currentCellObject.upstream;
+            for(let k = 0; k < currentUpStream.length; k++){
+                removeFromDownStream(currentUpStream[k],currentCellObject);
+            }
+            currentCellObject.upstream = [];
         })
         cellDiv.contentEditable = true;
 
@@ -78,6 +84,23 @@ for (let i = 1; i <= 100; i++) {
     }
 
     cellDivison1.append(rowCell);
+}
+
+
+function removeFromDownStream(parentcell,childcell){
+
+    let parentDownstream = dataObj[parentcell].downstream;
+
+    let filteredDownStream = [];
+
+    for(let k = 0; k < parentDownstream.length; k++){
+        
+        if(parentDownstream[k] != childcell){
+            filteredDownStream.push(parentDownstream[k]);
+        }
+    }
+
+    dataObj[parentcell].downstream = filteredDownStream
 }
 
 
