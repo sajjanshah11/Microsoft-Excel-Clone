@@ -60,9 +60,15 @@ for (let i = 1; i <= 100; i++) {
             currentCellObject.formula = undefined;
             let currentUpStream = currentCellObject.upstream;
             for(let k = 0; k < currentUpStream.length; k++){
-                removeFromDownStream(currentUpStream[k],currentCellObject);
+                removeFromDownStream(currentUpStream[k],currentCellAdress);
             }
             currentCellObject.upstream = [];
+
+            let currentCellDownstream = currentCellObject.downstream;
+
+            for(let m = 0 ; m < currentCellDownstream.length; m++){
+                updateCell(currentCellDownstream[m]);
+            }
         })
         cellDiv.contentEditable = true;
 
@@ -103,4 +109,26 @@ function removeFromDownStream(parentcell,childcell){
     dataObj[parentcell].downstream = filteredDownStream
 }
 
+function updateCell(cell){
+    
+    let cellObj = dataObj[cell];
+    let formula = cellObj.formula;
+    let CurrentUpstream = cellObj.upstream;
+
+    let valObj = {}
+
+    for(let i = 0; i < CurrentUpstream.length; i++){
+        let currValue = dataObj[currentUpStream[i]].value
+        valObj[currentUpStream[i]] = currValue;
+    }
+
+    for(let key in valObj){
+        formula = formula.replace(key,valObj[key])
+    }
+
+    let updatedValue = eval(formula);
+
+    cellObj.value = updatedValue;
+
+}
 
