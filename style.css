@@ -28,15 +28,21 @@ body{
     background-color: azure;
     display: flex;
     align-items: center;
+    
 }
 
 .file{
     margin: 12px 27px;
+    position: relative;
+    cursor: pointer;
 }
 
 .menu-options{
     height: 6%;
     background-color:#3ae374;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formula-bar{
@@ -156,4 +162,45 @@ body{
 .cell-selected{
     border: 2px solid green;
     outline: none;
+}
+
+.option-1,.option-3,.option-4{
+    width: 20%;
+    height: 100%;
+    border: 1px solid;
+}
+
+.option-2{
+    width: 40%;
+    height: 100%;
+    border: 1px solid;
+    
+}
+
+/* .option-1{
+    
+} */
+
+.menu-options div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal{
+    height: 12rem;
+    width: 12rem;
+    border: 1px solid;
+    background-color: #09dda5;
+    position: fixed;
+    top: 10rem;
+    left: 10rem;
+}
+
+.filesDropdown{
+    position: absolute;
+    left: 5px;
+    width: 55px;
+    background-color: white;
+    border: 1px solid;
 }

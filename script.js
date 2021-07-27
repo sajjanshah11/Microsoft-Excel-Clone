@@ -20,7 +20,7 @@ formulaInputSection.addEventListener("keydown", function (e) {
 
         cellObj.formula = formulaInputValue;
 
-        console.log(cellObj)
+        // console.log(cellObj)
 
         let currentUpStream = cellObj.upstream;
 
@@ -65,7 +65,7 @@ formulaInputSection.addEventListener("keydown", function (e) {
 
         let updatedValue = eval(formulaInputValue);
 
-        console.log(updatedValue);
+        // console.log(updatedValue);
 
         prevCell.innerText = updatedValue;
         
@@ -125,7 +125,10 @@ for (let i = 1; i <= 100; i++) {
             value: undefined,
             formula: undefined,
             upstream: [],
-            downstream: []
+            downstream: [],
+            align:"left",
+            color:"black",
+            bgcolor:"white"
         }
         let cellDiv = document.createElement("div");
 
@@ -149,8 +152,8 @@ for (let i = 1; i <= 100; i++) {
 
             dataObj[currentCellAdress] = currentCellObject;
 
-            console.log(dataObj);
-            console.log(2);
+            // console.log(dataObj);
+            // console.log(2);
         })
         cellDiv.contentEditable = true;
 
